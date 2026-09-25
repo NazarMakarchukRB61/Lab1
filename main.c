@@ -1,16 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
-//-------------Макровизначення--------
+//-------------РњР°РєСЂРѕРІРёР·РЅР°С‡РµРЅРЅСЏ--------
 #define Name "Mykhailo"
 #define LastName "Makarchuk"
 #define GroupName "RB-61"
 #define Faculty "RTF"
 #define University "Igor Sikorsky Kyiv Polytechnic Institute"
 
-//---Це точка входу до програми-----
+//---Р¦Рµ С‚РѕС‡РєР° РІС…РѕРґСѓ РґРѕ РїСЂРѕРіСЂР°РјРё-----
 int main()
 {
-//---------Оголошення змінних. Не ініціалізовані---------
+    //---------РћРіРѕР»РѕС€РµРЅРЅСЏ Р·РјС–РЅРЅРёС…. РќРµ С–РЅС–С†С–Р°Р»С–Р·РѕРІР°РЅС–---------
     unsigned int semestr;
     unsigned int age;
              int grade1;
@@ -24,11 +24,11 @@ int main()
 
 
     printf("%s %s Enter following data.\n", Name, LastName);
-    //------Запрошення на введення інформації-----
+   //------Р—Р°РїСЂРѕС€РµРЅРЅСЏ РЅР° РІРІРµРґРµРЅРЅСЏ С–РЅС„РѕСЂРјР°С†С–С—-----
     printf("Enter semestr:");
     scanf("%u", &semestr);
 
-    //-------Закінчення вводу----
+    //-------Р—Р°РєС–РЅС‡РµРЅРЅСЏ РІРІРѕРґСѓ----
     printf("Enter your admission score: ");
     scanf("%f", &admissionScore);
     printf("Enter grade #1: ");
@@ -43,11 +43,11 @@ int main()
     scanf("%d", &grade5);
     printf("Enter your age: ");
     scanf("%u", &age);
-    //------Обчислення середнього значення обчислення------
+    //------РћР±С‡РёСЃР»РµРЅРЅСЏ СЃРµСЂРµРґРЅСЊРѕРіРѕ Р·РЅР°С‡РµРЅРЅСЏ РѕР±С‡РёСЃР»РµРЅРЅСЏ------
     averageGrade = (double)(grade1 + grade2 + grade3 + grade4 + grade5) / 5;
-    //----Очищення екрану---
+    //----РћС‡РёС‰РµРЅРЅСЏ РµРєСЂР°РЅСѓ---
     system("cls");
-    //-----Виведення інформації----
+    //-----Р’РёРІРµРґРµРЅРЅСЏ С–РЅС„РѕСЂРјР°С†С–С—----
     printf("%s", University);
     printf("\n%s", Faculty);
     printf("\n%s", GroupName);
