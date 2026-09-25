@@ -1,1 +1,163 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <conio.h>
 
+int main()
+{
+    // Оголошення змінних
+    unsigned int variant;
+    int N;
+    int n;
+
+    double X1, X2, delta, x;
+    double f;
+    double previousX, previousF;
+
+    int firstPoint;
+    int rows;
+
+    // Вибір варіанту введення початкових даних
+    do
+    {
+        printf("Enter variant (1 or 2): ");
+        scanf("%u", &variant);
+
+        if (variant != 1 && variant != 2)
+        {
+            printf("Variant not valid. Try again.\n");
+        }
+
+    } while (variant != 1 && variant != 2);
+
+    // Введення початкового та кінцевого значення
+    do
+    {
+        printf("Enter X1: ");
+        scanf("%lf", &X1);
+
+        printf("Enter X2: ");
+        scanf("%lf", &X2);
+
+        if (X2 <= X1)
+        {
+            printf("X2 must be greater than X1.\n");
+        }
+
+    } while (X2 <= X1);
+
+    // Варіант 1: X1, X2, N
+    if (variant == 1)
+    {
+        printf("Enter N: ");
+        scanf("%d", &N);
+
+        while (N < 2)
+        {
+            printf("N must be >= 2. Enter N again: ");
+            scanf("%d", &N);
+        }
+
+        // Розрахунок кроку
+        delta = (X2 - X1) / (N - 1);
+    }
+
+    // Варіант 2: X1, X2, delta
+    else
+    {
+        printf("Enter delta: ");
+        scanf("%lf", &delta);
+
+        while (delta <= 0 || delta > X2 - X1)
+        {
+            printf("Delta not valid. Enter delta again: ");
+            scanf("%lf", &delta);
+        }
+
+        // Розрахунок кількості точок
+        N = (int)((X2 - X1) / delta) + 1;
+    }
+
+    // Виведення початкових даних
+    printf("\nInitial data:\n");
+    printf("X1 = %.2lf\n", X1);
+    printf("X2 = %.2lf\n", X2);
+    printf("delta = %.2lf\n", delta);
+    printf("N = %d\n", N);
+
+    printf("\nPress any key to continue...");
+    _getch();
+
+    // Заголовок таблиці
+    printf("\n");
+    printf("+--------+----------------+----------------+\n");
+    printf("|   N    |       X        |      F(X)       |\n");
+    printf("+--------+----------------+----------------+\n");
+
+    rows = 0;
+
+    // Початкові значення для перевірки зміни знака
+    firstPoint = 1;
+
+    // Побудова таблиці
+    for (n = 0; n < N; n++)
+    {
+        x = X1 + n * delta;
+
+        // Функція варіанта 9
+        f = 4 * pow(x / 10.0 - 2, 3) - 15 * x + 12;
+
+        printf("| %6d | %14.4lf | %14.4lf |\n",
+               n + 1, x, f);
+
+        rows++;
+
+        // Перевірка зміни знака
+        if (firstPoint == 0)
+        {
+            if ((previousF < 0 && f > 0) ||
+                (previousF > 0 && f < 0))
+            {
+                printf("\nSign change: [%.4lf; %.4lf]\n",
+                       previousX, x);
+            }
+        }
+
+        previousX = x;
+        previousF = f;
+        firstPoint = 0;
+
+        // Пауза після заповнення екрана
+        if (rows == 20 && n < N - 1)
+        {
+            if (n == 19)
+            {
+                printf("\nPress Any Key to Continue...");
+                _getch();
+
+                printf("\r                             \r");
+            }
+            else
+            {
+                _getch();
+            }
+
+            rows = 0;
+        }
+    }
+
+    printf("+--------+----------------+----------------+\n");
+
+    printf("\nProgram finished.\n");
+
+    return 0;
+}
+=======
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    printf("Hello world!\n");
+    return 0;
+}
